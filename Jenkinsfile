@@ -39,8 +39,8 @@ pipeline {
         stage('Deploy to Minikube') {
             steps {
                 sh 'sed -i "s|DOCKERHUB_USER/library-system:latest|${IMAGE}:${TAG}|" k8s/deployment.yaml'
-                sh 'kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml'
-                sh 'kubectl rollout status deployment/library-app --timeout=120s'
+                sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig apply -f k8s/deployment.yaml -f k8s/service.yaml'
+                sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig rollout status deployment/library-app --timeout=120s'
             }
         }
 
