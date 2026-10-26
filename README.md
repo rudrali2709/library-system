@@ -56,4 +56,5 @@ rolling update. The site then showed the new header and its footer changed from 
     ./library        then open http://localhost:8080
 
 ## Limitations
-Book state lives inside the pod and resets when it restarts; there is a single replica; and there is no real authentication.
+Book state lives inside the pod and resets when it restarts; there is a single replica; and there is no real authentication
+CI/CD automation test — build triggered by a GitHub code change.
