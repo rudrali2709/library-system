@@ -46,9 +46,9 @@ pipeline {
 
         stage('Verify') {
             steps {
-                sh 'kubectl get pods -o wide'
-                sh 'kubectl get deployment library-app'
-                sh 'kubectl get svc library-service'
+                sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get pods -o wide'
+sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get deployment library-app'
+sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get svc library-service'
                 sh 'curl -fs http://$(minikube ip):30080/api/version'
             }
         }
