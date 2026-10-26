@@ -49,7 +49,7 @@ pipeline {
                 sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get pods -o wide'
 sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get deployment library-app'
 sh 'kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get svc library-service'
-                sh 'curl -fs http://$(minikube ip):30080/api/version'
+                sh 'curl -fs http://$(kubectl --kubeconfig=/var/lib/jenkins/kubeconfig get nodes -o jsonpath="{.items[0].status.addresses[?(@.type==\\"InternalIP\\")].address}"):30080/api/version'
             }
         }
     }
